@@ -13,8 +13,61 @@ app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
 
+
+var pageContentOne = {
+  title:"Article One",
+  heading:"Article One"
+  content:`        
+        <div> 
+            Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. 
+        </div>`
+};
+
+funtion createTemplate(data) {
+    var title = data.title;
+    var heading = data.heading;
+    var content = data.content;
+    var htmlPage = `
+    <html>
+        <head>
+            <title> ${title} </title>
+            <meta name = 'viewport' content ="width=device-width, initial-scale = 1" />
+            <style>
+                .container{
+                    max-width: 800px;
+                    margin: 0 auto;
+                    font-family:sans-serif;
+                    padding-top:100px;
+                    padding-left:20px;
+                    padding-right:20px;
+                    color: #771717;
+                }
+                p {
+                    color : darkgreen;
+                }
+                h3 {
+                    margin : auto;
+                }
+            </style>
+        </head>
+        
+        <body>
+            <div class = "container">
+                <div>
+                    <a href = '/'>Home</a>
+                </div>
+                <hr/>
+                <h3> ${heading} </h3>
+                <p> Description </p>
+                <div> ${content} </div>
+            </div>
+        </body>
+    </html>`;
+    return htmlPage;
+}
+
 app.get('/article-one' , function (req, res) {
-    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+    res.send(createTemplate(pageContentOne));
 });
 
 app.get('/article-two' , function (req, res) {
