@@ -15,15 +15,15 @@ app.get('/ui/style.css', function (req, res) {
 
 
 var pageContentOne = {
-  title:"Article One",
-  heading:"Article One"
+  title:'Article One',
+  heading:'Article One',
   content:`        
         <div> 
             Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. 
         </div>`
 };
 
-funtion createTemplate(data) {
+function createTemplate(data) {
     var title = data.title;
     var heading = data.heading;
     var content = data.content;
