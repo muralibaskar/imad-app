@@ -13,14 +13,31 @@ app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
 
-
-var pageContentOne = {
-  title:'Article One',
-  heading:'Article One',
-  content:`        
-        <div> 
-            Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. 
-        </div>`
+var pageContents = {
+    'article-one' : {
+      title:'Article One',
+      heading:'Article One',
+      content:`        
+            <div> 
+                Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article One. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. 
+            </div>`
+    },
+    'article-two' : {
+      title:'Article Two',
+      heading:'Article Two',
+      content:`        
+            <div> 
+                Home Page for Article Two. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article Two. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article Two. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article Two. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. 
+            </div>`
+    },
+    'article-three' : {      
+      title:'Article Three',
+      heading:'Article Three',
+      content:`        
+            <div> 
+                Home Page for Article Three. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article Three. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article Three. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. Home Page for Article Three. This is a web development learnin project from IIT Madras. This module is about client side scripting. Introduction to HTML, CSS and JS. 
+            </div>`
+    }
 };
 
 function createTemplate(data) {
@@ -50,17 +67,11 @@ function createTemplate(data) {
     return htmlPage;
 }
 
-app.get('/article-one' , function (req, res) {
-    res.send(createTemplate(pageContentOne));
+app.get('/:articleName' , function (req, res) {
+    var articleName = req.params.articleName;
+    res.send(createTemplate(pageContents[articleName]));
 });
 
-app.get('/article-two' , function (req, res) {
-    res.send('Article two rquested and will be serve here');
-});
-
-app.get('/article-three' , function (req, res) {
-    res.send('Article three rquested and will be serve here');
-});
 
 
 app.get('/ui/madi.png', function (req, res) {
